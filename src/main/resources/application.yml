@@ -1,0 +1,39 @@
+server:
+  port: 8070
+
+pod:
+  id: ${POD_ID}
+
+spring:
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+  flyway:
+    enabled: true
+    table: flyway_schema_kafka_consumer_study
+    locations: classpath:/sql
+    baseline-on-migrate: true
+    url: ${DATASOURCE_URL}
+    user: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+
+kafka:
+  schema:
+    registry:
+      url: ${SCHEMA_REGISTRY_URL}
+  topic:
+    name: ${KAFKA_TOPIC_NAME}
+    name2: ${KAFKA_TOPIC_NAME2}
+  consumer:
+    concurrency: ${KAFKA_CONCURRENCY}
+    group:
+      name: ${KAFKA_CONSUMER_GROUP_NAME}
+  bootstrap:
+    address: ${KAFKA_BOOTSTRAP_ADDRESS}

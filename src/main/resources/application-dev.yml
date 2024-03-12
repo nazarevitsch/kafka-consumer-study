@@ -1,0 +1,31 @@
+server:
+  port: 8070
+
+pod:
+  id: 1
+
+spring:
+  jpa:
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5458/kafka_study
+    username: postgres
+    password: postgres
+  flyway:
+    url: jdbc:postgresql://localhost:5458/kafka_study
+    user: postgres
+    password: postgres
+
+kafka:
+  schema:
+    registry:
+      url: http://0.0.0.0:8081
+  topic:
+    name: message-new-topic
+    name2: message-new2-topic
+  consumer:
+    concurrency: 1
+    group:
+      name: message-group
+  bootstrap:
+    address: localhost:9094
